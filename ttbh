@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomsk Business Hub - Единое решение для IT-компаний</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --dark: #2A2D3E;
+            --light: #F7F9FC;
+            --success: #4CAF50;
+            --warning: #FF9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Герой секция */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
+            background-size: cover;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 101, 132, 0.4);
+            position: relative;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 101, 132, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Секции */
+        section {
+            padding: 5rem 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .service-card i {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Цены */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.2);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'ПОПУЛЯРНЫЙ';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+        
+        /* Отзывы */
+        .testimonials {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .testimonial-info p {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        .rating {
+            color: var(--warning);
+            margin-top: 1rem;
+        }
+        
+        /* Оплата */
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            min-width: 150px;
+            cursor: pointer;
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-method i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .how-it-works {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 220px;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+        
+        .step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5ee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+        
+        .form-group textarea {
+            height: 140px;
+            resize: vertical;
+        }
+        
+        .contacts {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5ee;
+        }
+        
+        .contact-person {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 10px;
+            margin: 0.5rem;
+            flex: 1;
+            min-width: 250px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .contact-person:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-person i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid var(--primary);
+        }
+        
+        .photo-upload {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .photo-upload input {
+            display: none;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .modal h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1c2b 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Анимации */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .step:not(:last-child)::after {
+                display: none;
+            }
+            
+            .steps {
+                justify-content: center;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.3rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                text-align: center;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hubspot"></i>
+                    Tomsk Business Hub
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#pricing">Цены</a></li>
+                        <li><a href="#payment">Оплата</a></li>
+                        <li><a href="#testimonials">Отзывы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="container">
+            <h1>Единое решение для IT-компаний Томска</h1>
+            <p>Сервис-агрегатор и оператор логистики, предоставляющий полный пакет услуг через единую платформу</p>
+            <a href="#contact" class="btn floating">Начать сотрудничество</a>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about">
+        <div class="container">
+            <h2>О нашем бизнесе</h2>
+            <div class="service-card">
+                <p>Tomsk Business Hub - это уникальный сервис, созданный специально для IT-компаний, стартапов и фрилансеров Томска. Мы понимаем, что логистика и поиск надежных B2B-услуг отнимают драгоценное время, которое можно направить на развитие бизнеса.</p>
+                <p>Наша миссия - стать вашим внешним департаментом снабжения и быта, предоставляя комплексное решение через единую платформу. Мы объединяем умную логистику и проверенные B2B-услуги, чтобы вы могли сосредоточиться на своей основной деятельности.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Умная логистика</h3>
+                    <p>Ежедневные экспресс-доставки документов и грузов в ключевые города России. Консолидированные закупки оборудования с существенной экономией. Доставка обедов, воды и канцелярии в офисы.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>B2B-услуги по подписке</h3>
+                    <p>Доступ к проверенным специалистам: юристам, бухгалтерам и маркетологам, которые специализируются на работе с IT-бизнесом. Мы выступаем гарантом качества и организуем весь процесс взаимодействия.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-cog"></i>
+                    <h3>Абонентское обслуживание</h3>
+                    <p>Единый пакет услуг за фиксированную ежемесячную плату. Вы получаете полный спектр необходимых сервисов без скрытых платежей и неожиданных расходов. Экономьте время и деньги с нашим комплексным решением.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цены -->
+    <section id="pricing">
+        <div class="container">
+            <h2>Наши тарифы</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Стартовый</h3>
+                    <div class="price">5 000 <span>руб/мес</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> До 10 доставок в месяц</li>
+                        <li><i class="fas fa-check"></i> Консолидированные закупки 1 раз в месяц</li>
+                        <li><i class="fas fa-check"></i> Консультация юриста (2 часа/мес)</li>
+                        <li><i class="fas fa-times"></i> Бухгалтерское сопровождение</li>
+                        <li><i class="fas fa-times"></i> Приоритетная поддержка</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="scrollToPayment()">Выбрать тариф</button>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Бизнес</h3>
+                    <div class="price">15 000 <span>руб/мес</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> До 50 доставок в месяц</li>
+                        <li><i class="fas fa-check"></i> Консолидированные закупки 2 раза в месяц</li>
+                        <li><i class="fas fa-check"></i> Консультация юриста (5 часов/мес)</li>
+                        <li><i class="fas fa-check"></i> Бухгалтерское сопровождение</li>
+                        <li><i class="fas fa-check"></i> Приоритетная поддержка 24/7</li>
+                    </ul>
+                    <button class="btn" onclick="scrollToPayment()">Выбрать тариф</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Корпоративный</h3>
+                    <div class="price">30 000 <span>руб/мес</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Неограниченное количество доставок</li>
+                        <li><i class="fas fa-check"></i> Консолидированные закупки по запросу</li>
+                        <li><i class="fas fa-check"></i> Полное юридическое сопровождение</li>
+                        <li><i class="fas fa-check"></i> Бухгалтерское и налоговое планирование</li>
+                        <li><i class="fas fa-check"></i> Персональный менеджер</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="scrollToPayment()">Выбрать тариф</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Оплата -->
+    <section id="payment" class="how-it-works">
+        <div class="container">
+            <h2>Как происходит оплата</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выбор тарифа</h3>
+                    <p>Выбираете подходящий тариф и оформляете заявку на сайте</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Подписание договора</h3>
+                    <p>Мы готовим индивидуальный договор и выставляем счет</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Оплата</h3>
+                    <p>Оплачиваете счет удобным для вас способом</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Начало работы</h3>
+                    <p>После поступления оплаты мы активируем ваш аккаунт</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3>Способы оплаты</h3>
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="openPaymentModal('bank')">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Банковская карта</span>
+                    </div>
+                    <div class="payment-method" onclick="window.open('https://www.tbank.ru', '_blank')">
+                        <i class="fas fa-university"></i>
+                        <span>T-Bank</span>
+                    </div>
+                    <div class="payment-method" onclick="window.open('https://yoomoney.ru', '_blank')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Ю-money</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Отзывы наших клиентов</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей Петров" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Алексей Петров</h4>
+                            <p>CEO "TechSolutions"</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Сотрудничаем с Tomsk Business Hub уже 8 месяцев. За это время наша компания смогла сократить логистические расходы на 40%, а время на решение административных вопросов уменьшилось в 3 раза. Бизнес пошел вверх - за последний квартал рост прибыли составил 25%!"
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ольга Козлова" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Ольга Козлова</h4>
+                            <p>Руководитель "WebInnovations"</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Tomsk Business Hub помог нам систематизировать все бизнес-процессы. Особенно хочу отметить качество B2B-услуг - юристы и бухгалтеры действительно разбираются в специфике IT-сферы. За 9 месяцев мы увеличили клиентскую базу на 60% и вышли на самоокупаемость!"
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact">
+        <div class="container">
+            <h2>Свяжитесь с нами</h2>
+            <div class="contact-info">
+                <p>Готовы упростить свою бизнес-жизнь? Оставьте заявку, и мы свяжемся с вами в течение 24 часов для обсуждения ваших потребностей и подготовки индивидуального предложения.</p>
+                
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" placeholder="Название компании">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="example@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="service">Интересующая услуга</label>
+                        <select id="service">
+                            <option value="">Выберите услугу</option>
+                            <option value="logistics">Умная логистика</option>
+                            <option value="b2b">B2B-услуги</option>
+                            <option value="subscription">Абонентское обслуживание</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" placeholder="Расскажите о ваших потребностях..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn">Отправить заявку</button>
+                    </div>
+                </div>
+                
+                <div class="contacts">
+                    <div class="contact-person" id="kuchina">
+                        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Кучина Елизавета" class="contact-photo" id="kuchina-photo">
+                        <h3>Кучина Елизавета</h3>
+                        <p>st144180@gsom.spbu.ru</p>
+                        <div class="photo-upload">
+                            <label for="upload-kuchina">Изменить фото</label>
+                            <input type="file" id="upload-kuchina" accept="image/*" onchange="handlePhotoUpload(this, 'kuchina-photo')">
+                        </div>
+                    </div>
+                    <div class="contact-person" id="nikitina">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Никитина Таисия" class="contact-photo" id="nikitina-photo">
+                        <h3>Никитина Таисия</h3>
+                        <p>st143191@gsom.spbu.ru</p>
+                        <div class="photo-upload">
+                            <label for="upload-nikitina">Изменить фото</label>
+                            <input type="file" id="upload-nikitina" accept="image/*" onchange="handlePhotoUpload(this, 'nikitina-photo')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-hubspot"></i>
+                    Tomsk Business Hub
+                </div>
+                <div class="footer-contact">
+                    <p>Единое решение для IT-компаний Томска</p>
+                    <p>st144180@gsom.spbu.ru - Кучина Елизавета</p>
+                    <p>st143191@gsom.spbu.ru - Никитина Таисия</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Tomsk Business Hub. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно оплаты -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h3>Заполните данные для оплаты</h3>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Номер карты</label>
+                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Имя владельца</label>
+                    <input type="text" id="card-name" placeholder="IVAN IVANOV">
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="card-expiry">Срок действия</label>
+                        <input type="text" id="card-expiry" placeholder="ММ/ГГ" maxlength="5">
+                    </div>
+                    <div>
+                        <label for="card-cvv">CVV</label>
+                        <input type="text" id="card-cvv" placeholder="000" maxlength="3">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email-payment">Email для квитанции</label>
+                    <input type="email" id="email-payment" placeholder="example@mail.com">
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" class="btn" onclick="processPayment()">Оплатить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Обработка формы
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('nav a, .btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Функция прокрутки к разделу оплаты
+        function scrollToPayment() {
+            document.getElementById('payment').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Функции для модального окна оплаты
+        function openPaymentModal(type) {
+            document.getElementById('payment-modal').style.display = 'flex';
+        }
+        
+        function closePaymentModal() {
+            document.getElementById('payment-modal').style.display = 'none';
+        }
+        
+        function processPayment() {
+            alert('Оплата прошла успешно! Спасибо за ваш заказ.');
+            closePaymentModal();
+        }
+        
+        // Функция для загрузки фотографий
+        function handlePhotoUpload(input, photoId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(photoId).src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('payment-modal');
+            if (e.target === modal) {
+                closePaymentModal();
+            }
+        });
+    </script>
+</body>
+</html>
